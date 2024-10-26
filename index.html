@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg till Testorder</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #007acc;
+        }
+        p {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #007acc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lägg till Testorder</h1>
+        <p>Tryck på knappen nedan för att lägga till en testorder i din app.</p>
+        <button onclick="addTestOrder()">Lägg till Testorder</button>
+    </div>
+
+    <script>
+        function addTestOrder() {
+            fetch('http://YOUR_LAPTOP_IP:5000/add_product', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Testorder tillagd! Totala försäljningar: " + data.sales_count);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Kunde inte lägga till testorder.");
+            });
+        }
+    </script>
+</body>
+</html>
