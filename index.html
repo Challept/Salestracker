@@ -50,7 +50,7 @@
 
     <script>
         function addTestOrder() {
-            fetch('http://YOUR_LAPTOP_IP:5000/add_product', {
+            fetch('http://192.168.1.144:5000/add_product', {  // Your laptop's IP address
                 method: 'POST'
             })
             .then(response => response.json())
